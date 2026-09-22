@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>D3 Showcase Lab</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Interactive D3.js gallery</p>
+        <h1>D3 Showcase Lab</h1>
+      </div>
+      <nav aria-label="Showcase sections">
+        <a href="#force">Force</a>
+        <a href="#radial">Radial</a>
+        <a href="#stream">Stream</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="intro-title">
+        <div class="intro-copy">
+          <h2 id="intro-title">A compact museum of motion, data, and interaction.</h2>
+          <p>
+            Three original D3.js pieces render live in the browser: draggable networks,
+            zoomable structure, and flowing temporal data.
+          </p>
+        </div>
+        <div class="stats" aria-label="Showcase summary">
+          <div><strong>3</strong><span>live scenes</span></div>
+          <div><strong>60fps</strong><span>animated SVG</span></div>
+          <div><strong>D3 v7</strong><span>CDN powered</span></div>
+        </div>
+      </section>
+
+      <section class="showcase featured" id="force" aria-labelledby="force-title">
+        <div class="panel-copy">
+          <p class="eyebrow">01 / Simulation</p>
+          <h2 id="force-title">Orbiting Force Constellation</h2>
+          <p>
+            Drag nodes, watch clusters reorganize, and hover for membership details.
+            The simulation balances charge, collision, and link tension in real time.
+          </p>
+        </div>
+        <div class="viz-wrap">
+          <svg id="force-viz" role="img" aria-label="Interactive force-directed constellation"></svg>
+        </div>
+      </section>
+
+      <section class="showcase" id="radial" aria-labelledby="radial-title">
+        <div class="panel-copy">
+          <p class="eyebrow">02 / Hierarchy</p>
+          <h2 id="radial-title">Radial Skill Galaxy</h2>
+          <p>
+            A packed hierarchy turns nested information into an inspectable galaxy.
+            Hover any circle to reveal its lineage and relative weight.
+          </p>
+        </div>
+        <div class="viz-wrap">
+          <svg id="radial-viz" role="img" aria-label="Radial packed hierarchy visualization"></svg>
+        </div>
+      </section>
+
+      <section class="showcase" id="stream" aria-labelledby="stream-title">
+        <div class="panel-copy">
+          <p class="eyebrow">03 / Time Series</p>
+          <h2 id="stream-title">Living Streamgraph</h2>
+          <p>
+            Smoothly animated layers show changing signal strength over time.
+            The cursor reads exact values without freezing the motion.
+          </p>
+        </div>
+        <div class="viz-wrap">
+          <svg id="stream-viz" role="img" aria-label="Animated streamgraph visualization"></svg>
+        </div>
+      </section>
+    </main>
+
+    <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
