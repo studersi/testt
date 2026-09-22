@@ -1,17 +1,19 @@
 :root {
   color-scheme: dark;
-  --bg: #101114;
-  --surface: #191b20;
-  --surface-strong: #20242b;
-  --ink: #f6f2e8;
-  --muted: #b8b1a4;
-  --line: rgba(255, 255, 255, 0.13);
-  --aqua: #38d6c8;
-  --gold: #f4bf4f;
-  --rose: #ff6f8e;
-  --green: #89d86d;
-  --blue: #71a7ff;
-  --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+  --bg: #0d0e10;
+  --panel: #17191d;
+  --panel-2: #1f2228;
+  --ink: #f7f3ea;
+  --muted: #aaa398;
+  --soft: rgba(247, 243, 234, 0.68);
+  --line: rgba(247, 243, 234, 0.14);
+  --cyan: #42dfd1;
+  --amber: #f6c15a;
+  --coral: #ff7a84;
+  --lime: #93dd6f;
+  --sky: #7aafff;
+  --violet: #b69cff;
+  --shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -27,199 +29,271 @@ html {
 
 body {
   margin: 0;
+  min-width: 320px;
   min-height: 100vh;
   background:
-    linear-gradient(120deg, rgba(56, 214, 200, 0.08), transparent 28rem),
-    linear-gradient(240deg, rgba(255, 111, 142, 0.08), transparent 30rem),
-    var(--bg);
+    radial-gradient(circle at 18% 8%, rgba(66, 223, 209, 0.14), transparent 28rem),
+    radial-gradient(circle at 88% 18%, rgba(255, 122, 132, 0.13), transparent 26rem),
+    linear-gradient(180deg, #111317 0%, var(--bg) 46%, #090a0c 100%);
   color: var(--ink);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background-image:
+    linear-gradient(rgba(247, 243, 234, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247, 243, 234, 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 78%);
 }
 
 .topbar {
   position: sticky;
   top: 0;
-  z-index: 5;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem clamp(1rem, 4vw, 3rem);
+  padding: 0.82rem clamp(1rem, 4vw, 3.5rem);
   border-bottom: 1px solid var(--line);
-  background: rgba(16, 17, 20, 0.86);
+  background: rgba(13, 14, 16, 0.78);
   backdrop-filter: blur(18px);
 }
 
-.topbar h1,
-.topbar p {
-  margin: 0;
+.brand,
+nav a {
+  color: var(--ink);
+  text-decoration: none;
 }
 
-.topbar h1 {
-  font-size: clamp(1.25rem, 2vw, 1.9rem);
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 2.5rem;
+  font-weight: 760;
+}
+
+.brand-mark {
+  width: 1.05rem;
+  height: 1.05rem;
+  border: 1px solid rgba(247, 243, 234, 0.8);
+  border-radius: 50%;
+  background:
+    linear-gradient(135deg, transparent 42%, var(--ink) 43% 57%, transparent 58%),
+    conic-gradient(from 140deg, var(--cyan), var(--amber), var(--coral), var(--sky), var(--cyan));
+  box-shadow: 0 0 28px rgba(66, 223, 209, 0.35);
 }
 
 nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 0.45rem;
+  gap: 0.35rem;
 }
 
 nav a {
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   border-radius: 999px;
-  color: var(--ink);
-  padding: 0.55rem 0.8rem;
-  text-decoration: none;
+  color: var(--soft);
+  padding: 0.58rem 0.78rem;
+  font-size: 0.9rem;
   transition:
-    background 160ms ease,
-    color 160ms ease,
-    border-color 160ms ease;
+    background 170ms ease,
+    border-color 170ms ease,
+    color 170ms ease;
 }
 
 nav a:hover,
 nav a:focus-visible {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: var(--bg);
+  border-color: var(--line);
+  background: rgba(247, 243, 234, 0.08);
+  color: var(--ink);
   outline: none;
 }
 
 main {
-  width: min(1420px, 100%);
+  width: min(1500px, 100%);
   margin: 0 auto;
-  padding: clamp(1rem, 3vw, 2.5rem);
+  padding: clamp(1rem, 3vw, 3rem);
 }
 
-.intro {
+.hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
-  gap: clamp(1rem, 3vw, 2rem);
-  min-height: 42vh;
-  align-items: end;
-  padding: clamp(2rem, 7vw, 6rem) 0 clamp(1.5rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 0.8fr) minmax(420px, 1.2fr);
+  gap: clamp(1.3rem, 4vw, 4rem);
+  min-height: calc(100vh - 5.2rem);
+  align-items: center;
+  padding: clamp(1rem, 3vw, 2.8rem) 0 clamp(2rem, 5vw, 4rem);
 }
 
-.intro h2 {
-  max-width: 900px;
-  margin: 0;
-  font-size: clamp(2.8rem, 9vw, 7.8rem);
-  line-height: 0.92;
-  text-wrap: balance;
-}
-
-.intro p {
-  max-width: 690px;
-  color: var(--muted);
-  font-size: clamp(1rem, 2vw, 1.3rem);
-  line-height: 1.65;
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.7rem;
-}
-
-.stats div {
-  min-width: 0;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.045);
-  padding: 1rem;
-}
-
-.stats strong,
-.stats span {
-  display: block;
-}
-
-.stats strong {
-  font-size: clamp(1.25rem, 3vw, 2rem);
-}
-
-.stats span {
-  margin-top: 0.3rem;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.showcase {
-  display: grid;
-  grid-template-columns: minmax(240px, 0.32fr) minmax(0, 0.68fr);
-  gap: clamp(1rem, 3vw, 2rem);
-  align-items: stretch;
-  padding: clamp(1rem, 3vw, 2rem) 0;
-  border-top: 1px solid var(--line);
-}
-
-.featured {
-  min-height: 76vh;
-}
-
-.panel-copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(0.5rem, 2vw, 1rem) 0;
+.hero-copy {
+  align-self: end;
+  padding-bottom: clamp(1rem, 4vw, 4rem);
 }
 
 .eyebrow {
-  color: var(--aqua);
+  margin: 0;
+  color: var(--cyan);
   font-size: 0.76rem;
-  font-weight: 800;
+  font-weight: 820;
   letter-spacing: 0;
   text-transform: uppercase;
 }
 
-.panel-copy h2 {
-  margin: 0.4rem 0 0.85rem;
-  font-size: clamp(1.7rem, 4vw, 4.4rem);
-  line-height: 1;
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 760px;
+  margin-bottom: 1.1rem;
+  font-size: clamp(3rem, 8.4vw, 8.8rem);
+  line-height: 0.88;
   text-wrap: balance;
 }
 
-.panel-copy p:not(.eyebrow) {
-  margin: 0;
+.hero-copy p:not(.eyebrow),
+.study-copy p:not(.eyebrow) {
+  max-width: 620px;
+  margin-bottom: 0;
   color: var(--muted);
-  font-size: clamp(1rem, 1.5vw, 1.15rem);
-  line-height: 1.65;
+  font-size: clamp(1rem, 1.45vw, 1.2rem);
+  line-height: 1.7;
 }
 
-.viz-wrap {
+.hero-stage {
   position: relative;
-  min-height: 520px;
+  min-height: min(720px, calc(100vh - 8rem));
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 45%),
-    var(--surface);
+    linear-gradient(135deg, rgba(247, 243, 234, 0.09), transparent 38%),
+    linear-gradient(180deg, rgba(122, 175, 255, 0.08), transparent 70%),
+    rgba(23, 25, 29, 0.9);
   box-shadow: var(--shadow);
 }
 
-.viz-wrap svg {
+.hero-stage svg,
+.viz-shell svg {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 520px;
+}
+
+.hero-stage svg {
+  min-height: min(720px, calc(100vh - 8rem));
+}
+
+.hero-meter {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(247, 243, 234, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.hero-meter span {
+  min-width: 0;
+  padding: 0.78rem 0.9rem;
+  background: rgba(13, 14, 16, 0.58);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.hero-meter strong {
+  display: block;
+  color: var(--ink);
+  font-size: clamp(1.25rem, 2.6vw, 2rem);
+  line-height: 1;
+}
+
+.study {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.34fr) minmax(0, 0.66fr);
+  gap: clamp(1.2rem, 3vw, 2.8rem);
+  align-items: stretch;
+  padding: clamp(2rem, 5vw, 4.5rem) 0;
+  border-top: 1px solid var(--line);
+}
+
+.study.reverse {
+  grid-template-columns: minmax(0, 0.66fr) minmax(260px, 0.34fr);
+}
+
+.study.reverse .study-copy {
+  order: 2;
+}
+
+.study-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.study-copy h2 {
+  margin: 0.45rem 0 0.8rem;
+  font-size: clamp(2rem, 4.8vw, 5.25rem);
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+.viz-shell {
+  position: relative;
+  min-height: 540px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(247, 243, 234, 0.08), transparent 42%),
+    linear-gradient(180deg, var(--panel-2), var(--panel));
+  box-shadow: var(--shadow);
+}
+
+.viz-shell.large {
+  min-height: 680px;
+}
+
+.viz-shell::after,
+.hero-stage::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .tooltip {
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 20;
-  max-width: min(280px, calc(100vw - 2rem));
+  z-index: 30;
+  max-width: min(300px, calc(100vw - 2rem));
   pointer-events: none;
   transform: translate(-999px, -999px);
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(16, 17, 20, 0.94);
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+  background: rgba(13, 14, 16, 0.94);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.36);
   color: var(--ink);
   opacity: 0;
-  padding: 0.72rem 0.8rem;
+  padding: 0.72rem 0.82rem;
   transition: opacity 120ms ease;
 }
 
@@ -238,20 +312,16 @@ main {
   font-size: 0.9rem;
 }
 
-.axis text,
-.axis path,
-.axis line {
-  color: rgba(246, 242, 232, 0.62);
-  stroke: currentColor;
+.axis text {
+  fill: rgba(247, 243, 234, 0.58);
+  font-size: 11px;
 }
 
-@media (max-width: 900px) {
-  .topbar,
-  .intro,
-  .showcase {
-    grid-template-columns: 1fr;
-  }
+.axis line {
+  stroke: rgba(247, 243, 234, 0.12);
+}
 
+@media (max-width: 980px) {
   .topbar {
     position: static;
     align-items: flex-start;
@@ -262,17 +332,48 @@ main {
     justify-content: flex-start;
   }
 
-  .intro {
-    min-height: auto;
-  }
-
-  .stats {
+  .hero,
+  .study,
+  .study.reverse {
     grid-template-columns: 1fr;
   }
 
-  .viz-wrap,
-  .viz-wrap svg {
-    min-height: 420px;
+  .study.reverse .study-copy {
+    order: 0;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-copy {
+    padding-bottom: 0;
+  }
+
+  .hero-stage,
+  .hero-stage svg,
+  .viz-shell,
+  .viz-shell.large {
+    min-height: 430px;
+  }
+}
+
+@media (max-width: 560px) {
+  main {
+    padding: 0.9rem;
+  }
+
+  .hero-meter {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-meter span {
+    padding: 0.62rem 0.7rem;
+  }
+
+  nav a {
+    padding-inline: 0.62rem;
+    font-size: 0.84rem;
   }
 }
 

@@ -3,78 +3,82 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>D3 Showcase Lab</title>
+    <title>Atlas of Flow - D3 Demo</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="topbar">
-      <div>
-        <p class="eyebrow">Interactive D3.js gallery</p>
-        <h1>D3 Showcase Lab</h1>
-      </div>
-      <nav aria-label="Showcase sections">
-        <a href="#force">Force</a>
-        <a href="#radial">Radial</a>
-        <a href="#stream">Stream</a>
+      <a class="brand" href="#hero" aria-label="Atlas of Flow home">
+        <span class="brand-mark"></span>
+        <span>Atlas of Flow</span>
+      </a>
+      <nav aria-label="Visualization sections">
+        <a href="#constellation">Constellation</a>
+        <a href="#galaxy">Galaxy</a>
+        <a href="#signals">Signals</a>
       </nav>
     </header>
 
     <main>
-      <section class="intro" aria-labelledby="intro-title">
-        <div class="intro-copy">
-          <h2 id="intro-title">A compact museum of motion, data, and interaction.</h2>
+      <section class="hero" id="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">D3 v7 / live SVG / responsive motion</p>
+          <h1 id="hero-title">A luminous atlas of living data.</h1>
           <p>
-            Three original D3.js pieces render live in the browser: draggable networks,
-            zoomable structure, and flowing temporal data.
+            Three crafted D3 studies share one visual language: physics, hierarchy,
+            and time-series flow rendered as an elegant interactive instrument.
           </p>
         </div>
-        <div class="stats" aria-label="Showcase summary">
-          <div><strong>3</strong><span>live scenes</span></div>
-          <div><strong>60fps</strong><span>animated SVG</span></div>
-          <div><strong>D3 v7</strong><span>CDN powered</span></div>
+        <div class="hero-stage" aria-label="Animated D3 overview">
+          <svg id="hero-viz" role="img"></svg>
+          <div class="hero-meter" aria-label="Demo summary">
+            <span><strong>3</strong> scenes</span>
+            <span><strong>142</strong> marks</span>
+            <span><strong>1</strong> page</span>
+          </div>
         </div>
       </section>
 
-      <section class="showcase featured" id="force" aria-labelledby="force-title">
-        <div class="panel-copy">
-          <p class="eyebrow">01 / Simulation</p>
-          <h2 id="force-title">Orbiting Force Constellation</h2>
+      <section class="study" id="constellation" aria-labelledby="constellation-title">
+        <div class="study-copy">
+          <p class="eyebrow">01 / simulation</p>
+          <h2 id="constellation-title">Constellation Map</h2>
           <p>
-            Drag nodes, watch clusters reorganize, and hover for membership details.
-            The simulation balances charge, collision, and link tension in real time.
+            Drag nodes through a soft force field and watch the links rebalance.
+            Cluster labels, glow strength, and mass all come from the same dataset.
           </p>
         </div>
-        <div class="viz-wrap">
+        <div class="viz-shell large">
           <svg id="force-viz" role="img" aria-label="Interactive force-directed constellation"></svg>
         </div>
       </section>
 
-      <section class="showcase" id="radial" aria-labelledby="radial-title">
-        <div class="panel-copy">
-          <p class="eyebrow">02 / Hierarchy</p>
-          <h2 id="radial-title">Radial Skill Galaxy</h2>
+      <section class="study reverse" id="galaxy" aria-labelledby="galaxy-title">
+        <div class="study-copy">
+          <p class="eyebrow">02 / hierarchy</p>
+          <h2 id="galaxy-title">Skill Galaxy</h2>
           <p>
-            A packed hierarchy turns nested information into an inspectable galaxy.
-            Hover any circle to reveal its lineage and relative weight.
+            Nested modules become a packed radial system with weighted planets,
+            orbital rings, and readable paths on hover.
           </p>
         </div>
-        <div class="viz-wrap">
+        <div class="viz-shell">
           <svg id="radial-viz" role="img" aria-label="Radial packed hierarchy visualization"></svg>
         </div>
       </section>
 
-      <section class="showcase" id="stream" aria-labelledby="stream-title">
-        <div class="panel-copy">
-          <p class="eyebrow">03 / Time Series</p>
-          <h2 id="stream-title">Living Streamgraph</h2>
+      <section class="study" id="signals" aria-labelledby="signals-title">
+        <div class="study-copy">
+          <p class="eyebrow">03 / time series</p>
+          <h2 id="signals-title">Signal Loom</h2>
           <p>
-            Smoothly animated layers show changing signal strength over time.
-            The cursor reads exact values without freezing the motion.
+            A streamgraph folds five changing signals into a single ribboned
+            landscape, with cursor inspection and animated reveals.
           </p>
         </div>
-        <div class="viz-wrap">
+        <div class="viz-shell">
           <svg id="stream-viz" role="img" aria-label="Animated streamgraph visualization"></svg>
         </div>
       </section>
